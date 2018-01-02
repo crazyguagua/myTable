@@ -3,6 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Table from './components/Table'
 class App extends Component {
+  componentWillMount(){
+    this.columns=[{
+      title:'aaa'
+    },{
+      title:'bbb'
+    }]
+  }
   render() {
     return (
       <div className="App">
@@ -14,7 +21,7 @@ class App extends Component {
          table 演示
         </p>
         <div>
-          <Table />
+          <Table columns={this.columns}/>
         </div>
       </div>
     );
