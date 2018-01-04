@@ -2,10 +2,26 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Table from './components/Table'
+let data=[{
+  range:'1',name:'曼城',goal:60,lose:20,og:40,points:50
+},{
+  range:'2',name:'曼联',goal:60,lose:20,og:40,points:50
+},{
+  range:'3',name:'切尔西',goal:60,lose:20,og:40,points:50
+},{
+  range:'4',name:'利物浦',goal:60,lose:20,og:40,points:50
+},{
+  range:'5',name:'托特纳姆热刺',goal:60,lose:20,og:40,points:50
+},{
+  range:'6',name:'阿森纳',goal:60,lose:20,og:40,points:50
+}]
 class App extends Component {
   componentDidMount(){
-   let appInfo =  document.querySelectorAll('.App-logo')[0]
-   console.log(appInfo.offsetTop)
+  //  let appInfo =  document.querySelectorAll('.App-logo')[0]
+  //  console.log(appInfo.offsetTop)
+  }
+  state={
+    data:[]
   }
   componentWillMount(){
     this.columns=[{
@@ -27,19 +43,12 @@ class App extends Component {
       title:'积分',
       dataIndex:'points'
     }]
-    this.data=[{
-      range:'1',name:'曼城',goal:60,lose:20,og:40,points:50
-    },{
-      range:'2',name:'曼联',goal:60,lose:20,og:40,points:50
-    },{
-      range:'3',name:'切尔西',goal:60,lose:20,og:40,points:50
-    },{
-      range:'4',name:'利物浦',goal:60,lose:20,og:40,points:50
-    },{
-      range:'5',name:'托特纳姆热刺',goal:60,lose:20,og:40,points:50
-    },{
-      range:'6',name:'阿森纳',goal:60,lose:20,og:40,points:50
-    }]
+   
+    setTimeout(()=>{
+      this.setState({
+        data:data
+      })
+    },1000)
   }
   render() {
     return (
@@ -52,7 +61,7 @@ class App extends Component {
          table 演示
         </p>
         <div style={{width:'600px',margin:'0 auto'}}>
-          <Table columns={this.columns} data={this.data}/>
+          <Table columns={this.columns} data={this.state.data}/>
         </div>
       </div>
     );
