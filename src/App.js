@@ -21,7 +21,7 @@ class App extends Component {
          table 演示
         </p>
         <div>
-          <Table columns={this.columns}/>
+          <Table columns={this.columns} data={[]}/>
         </div>
       </div>
     );

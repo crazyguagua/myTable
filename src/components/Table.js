@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import './table.less'
 
 export default class Table extends React.Component {
     static propTypes = {
@@ -13,15 +14,20 @@ export default class Table extends React.Component {
 
     render() {
         return (
-            <div>
-                <table>
-                    <thead>
-                        {this.props.columns.map((column)=>{
-                            return <th>{column.title}</th>
-                        })
-                        }
-                    </thead>
-                </table>
+            
+            <div className="my-table">
+                <div className="my-table-header-div">
+                    <table className="my-table-header">
+                        <thead>
+                            <tr>
+                            {this.props.columns.map((column,index)=>{
+                                return <th key={index}>{column.title}</th>
+                            })
+                            }
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         )
     }
