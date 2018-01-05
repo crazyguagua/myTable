@@ -14,6 +14,13 @@ export default class TableBody extends React.Component {
         return (
             
             <table className="my-table-body">
+                 <colgroup>
+                    {this.props.columns.map((column,index)=>{
+                        return (
+                            <col key={index} width="80"/>
+                        )
+                    })}
+                </colgroup>
                 <tbody>
                     {
                         this.props.data.map((d,idx)=>{

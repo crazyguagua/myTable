@@ -10,44 +10,31 @@ export default class TableHeader extends React.Component {
         data:PropTypes.array
     }
     componentWillReceiveProps(nextProps){
-       console.log(nextProps)
-       
     }
     componentWillMount(){
-        console.log(this.props)
+       
         if(this.props.data)this.showBody=true
     }
     render() {
         return (
             
             <table className="my-table-header">
+                <colgroup>
+                    {this.props.columns.map((column,index)=>{
+                        return (
+                            <col key={index} width="80"/>
+                        )
+                    })}
+                </colgroup>
                 <thead>
-                    <tr>
+                    <tr onClick={this.setWidth()}>
                     {this.props.columns.map((column,index)=>{
                         return <th key={index}>{column.title}</th>
                     })
                     }
                     </tr>
                 </thead>
-                {this.showBody&&
-                    <tbody>
-                    {
-                        this.props.data.map((d,idx)=>{
-                            return (
-                                <tr key={idx} >
-                                     {
-                                        this.props.columns.map((column,index)=>{
-                                            return <td key={index}>{d[column.dataIndex]}</td>
-                                        })
-                                     }
-                                </tr>
-                            )
-                        })
-                    }
-                   
-                  
-                     </tbody>
-                }
+                
             </table>
         )
     }

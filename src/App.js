@@ -3,17 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 import Table from './components/Table'
 let data=[{
-  range:'1',name:'曼城',goal:60,lose:20,og:40,points:50
+  range:'1',name:'曼城',goal:60,lose:20,og:40,points:50,captain:'孔帕尼',forward:'阿奎罗 热苏斯'
 },{
-  range:'2',name:'曼联',goal:60,lose:20,og:40,points:50
+  range:'2',name:'曼联',goal:60,lose:20,og:40,points:50,captain:'瓦伦西亚',forward:'拉屎福德 卢卡库 马夏尔'
 },{
-  range:'3',name:'切尔西',goal:60,lose:20,og:40,points:50
+  range:'3',name:'切尔西',goal:60,lose:20,og:40,points:50,captain:'大卫。路易斯',forward:'莫拉塔 巴蜀压抑'
 },{
-  range:'4',name:'利物浦',goal:60,lose:20,og:40,points:50
+  range:'4',name:'利物浦',goal:60,lose:20,og:40,points:50,captain:'乔丹。亨德森',forward:'菲尔米诺 索兰克 库底尼奥'
 },{
-  range:'5',name:'托特纳姆热刺',goal:60,lose:20,og:40,points:50
+  range:'5',name:'托特纳姆热刺',goal:60,lose:20,og:40,points:50,captain:'阿尔德雷维尔德',forward:'哈里凯恩 孙兴民 阿里'
 },{
-  range:'6',name:'阿森纳',goal:60,lose:20,og:40,points:50
+  range:'6',name:'阿森纳',goal:60,lose:20,og:40,points:50,captain:'科斯切尔尼',forward:'拉卡则特 吉鲁 桑切斯'
 }]
 class App extends Component {
   componentDidMount(){
@@ -30,6 +30,12 @@ class App extends Component {
     },{
       title:'球队',
       dataIndex:'name'
+    },{
+      title:'队长',
+      dataIndex:'captain'
+    },{
+      title:'前锋',
+      dataIndex:'forward'
     },{
       title:'进球',
       dataIndex:'goal'
@@ -48,19 +54,19 @@ class App extends Component {
       this.setState({
         data:data
       })
-    },1000)
+    },30)
   }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">react 轮子之 table组件</h1>
         </header>
         <p className="App-intro">
          table 演示
         </p>
-        <div style={{width:'600px',margin:'0 auto'}}>
+        <div style={{width:'600px',margin:'20px auto'}}>
           <Table columns={this.columns} data={this.state.data}/>
         </div>
       </div>
