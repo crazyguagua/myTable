@@ -35,7 +35,7 @@ class App extends Component {
       dataIndex:'captain'
     },{
       title:'前锋',
-      dataIndex:'forward'
+      dataIndex:'forward',width:100
     },{
       title:'进球',
       dataIndex:'goal'

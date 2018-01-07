@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-export default (WrapperComponent)=>class extends Component{
+
+export default (WrapperComponent)=>class extends WrapperComponent{
 
         setWidth(){
-            alert(1)
+           console.log(this)
         }
         constructor(props) {
             super(props)
@@ -11,9 +11,7 @@ export default (WrapperComponent)=>class extends Component{
         }
         render(){
             
-            return (
-                <WrapperComponent {...this.props} />
-            )
+           return super.render()
         }
     
 } 

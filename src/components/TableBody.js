@@ -17,7 +17,7 @@ export default class TableBody extends React.Component {
                  <colgroup>
                     {this.props.columns.map((column,index)=>{
                         return (
-                            <col key={index} width="80"/>
+                            <col key={index} width={column.width}/>
                         )
                     })}
                 </colgroup>

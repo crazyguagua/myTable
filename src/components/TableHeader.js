@@ -22,12 +22,12 @@ export default class TableHeader extends React.Component {
                 <colgroup>
                     {this.props.columns.map((column,index)=>{
                         return (
-                            <col key={index} width="80"/>
+                            <col key={index} width={column.width}/>
                         )
                     })}
                 </colgroup>
                 <thead>
-                    <tr onClick={this.setWidth()}>
+                    <tr onClick={this.setWidth}>
                     {this.props.columns.map((column,index)=>{
                         return <th key={index}>{column.title}</th>
                     })
