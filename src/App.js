@@ -28,11 +28,11 @@ class App extends Component {
       title:'排名',
       dataIndex:'range'
     },{
-      title:'球队',
-      dataIndex:'name'
+      title:'球队的全部名字啊啊啊',
+      dataIndex:'name',width:100
     },{
       title:'队长',
-      dataIndex:'captain'
+      dataIndex:'captain',width:100
     },{
       title:'前锋',
       dataIndex:'forward',width:100
@@ -67,7 +67,7 @@ class App extends Component {
          table 演示
         </p>
         <div style={{width:'600px',margin:'20px auto'}}>
-          <Table columns={this.columns} data={this.state.data}/>
+          <Table columns={this.columns} data={this.state.data} width="580" height="400"/>
         </div>
       </div>
     );
