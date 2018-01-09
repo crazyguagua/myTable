@@ -10,7 +10,11 @@ const TableHeaderWrapper = hoc(TableHeader)
 const TableBodyWrapper = hoc(TableBody)
 const scrollBarWith = getScrollBarSize();
 
-const minWidth =80 //每一列最小的宽度
+const minWidth =90 //每一列最小的宽度
+/**
+ * 如果设置高度，则可能出现纵向滚动条
+ * 如果宽度小于容器宽度，则出现横向滚动条，header横向不滚动，body横向滚动，监听body横向滚动，设置scrollLeft值，需要注意的是header的最后一列需要补上scrollBar的宽度
+ */
 export default class Table extends React.Component {
     static propTypes = {
         data:PropTypes.array.isRequired,
@@ -59,20 +63,24 @@ export default class Table extends React.Component {
         },0)
         autoWidth=allWidth-widthCount
         let avgWidth =  autoWidth/len
+        let isHorizontalScroll = autoWidth<minWidth*len
+        this.isHorizontalScroll = isHorizontalScroll
         columns.forEach((element,index)=> {
+            let w = Math.max(avgWidth,minWidth)
             if(!element.width){
-                element.width = Math.max(avgWidth,minWidth)
+                element.width = w
+                element.colWidth = w
+            }else{
+                element.colWidth = element.width
             }
             //解决tablebody横向滚动条滚动到最后一列，出现和tableHeader对不齐的问题
-            if(index==columns.length-1&&){
-
+            if(index===len-1&&isHorizontalScroll) {//自动列的平均值小于 默认最小列宽的时候
+                element.colWidth = w+scrollBarWith //最后一列的 colgroup的值需要加上滚动条的宽度
             }
         });
         this.allWidth=columns.reduce((a,b)=>{
             return a+(b.width||0)
         },0)
-        console.log(allWidth)
-        console.log(this.allWidth)
     }
     /**
      * table body 横向滚动同步
@@ -84,7 +92,6 @@ export default class Table extends React.Component {
         }
         const target = e.target;
         const { headTable, bodyTable } = this;
-        console.log(target.scrollLeft)
         if (target === bodyTable && bodyTable) {
             headTable.scrollLeft = target.scrollLeft;
         } 
@@ -96,8 +103,11 @@ export default class Table extends React.Component {
         let height = this.props.height
         let className=`my-table my-table-bordered`
         if(height){//列表头部固定
-            className+=' my-table-header-fixed'
+            className+=' my-table-vertical-scroll'
             height = parseFloat(height)
+        }
+        if(this.isHorizontalScroll){
+            className+=' my-table-horizontal-sroll'
         }
         return (
             
@@ -107,7 +117,7 @@ export default class Table extends React.Component {
                         <TableHeaderWrapper columns={this.props.columns} style={{width:this.allWidth}} />
                     </div>
                     <div className="my-table-body-div" ref={this.saveRef('bodyTable')} onScroll={this.onTablebodyLeftScroll}>
-                        <TableBodyWrapper data={this.props.data} columns={this.props.columns} style={{width:this.allWidth-scrollBarWith}}/>
+                        <TableBodyWrapper data={this.props.data} columns={this.props.columns} style={{width:this.allWidth}}/>
                     </div>
                 </div>
                 

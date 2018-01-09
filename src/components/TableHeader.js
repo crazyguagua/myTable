@@ -22,7 +22,7 @@ export default class TableHeader extends React.Component {
                 <colgroup>
                     {this.props.columns.map((column,index)=>{
                         return (
-                            <col key={index} width={column.width}/>
+                            <col key={index} width={column.colWidth}/>
                         )
                     })}
                 </colgroup>
