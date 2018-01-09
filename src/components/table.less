@@ -13,7 +13,7 @@
     border-radius: 4px 4px 0 0;
     border:1px solid #e8e8e8;
     & table{
-        width: 100%;
+        // width: 100%;
         border-collapse: separate;
         border-spacing: 0;
         text-align: left;
@@ -21,12 +21,14 @@
         overflow: hidden;
         table-layout: fixed;
     }
-    .table-content{
-        overflow-x: auto;
+    &-header-fixed .table-content{
+        overflow: hidden;
     }
-    &-header-fixed .my-table-body-div{
-        overflow-y: auto;
-        overflow-x: hidden;
+    &-header-fixed &-header-div{
+        overflow: hidden;
+    }
+    &-header-fixed  &-body-div{
+        overflow:auto;
         height: 400px;
     }
     &-header thead th{

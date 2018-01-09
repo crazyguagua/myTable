@@ -3,11 +3,11 @@
 
 import React from 'react'
 import PropTypes from 'prop-types';
-
 export default class TableHeader extends React.Component {
     static propTypes = {
         columns:PropTypes.array.isRequired,
-        data:PropTypes.array
+        data:PropTypes.array,
+        style:PropTypes.object
     }
     componentWillReceiveProps(nextProps){
     }
@@ -18,7 +18,7 @@ export default class TableHeader extends React.Component {
     render() {
         return (
             
-            <table className="my-table-header">
+            <table className="my-table-header" style={this.props.style}>
                 <colgroup>
                     {this.props.columns.map((column,index)=>{
                         return (

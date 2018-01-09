@@ -67,7 +67,7 @@ class App extends Component {
          table 演示
         </p>
         <div style={{width:'600px',margin:'20px auto'}}>
-          <Table columns={this.columns} data={this.state.data} width="580" height="400"/>
+          <Table columns={this.columns} data={this.state.data} width="550" height="400"/>
         </div>
       </div>
     );
